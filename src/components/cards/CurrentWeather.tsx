@@ -3,13 +3,16 @@ import React from 'react'
 import { getWeather } from '../../api';
 import Card from './Card';
 import WeatherIcon from '../WeatherIcon';
+import type { Coords } from '../../types'
 
-type Props = {}
+type Props = {
+    coords : Coords
+}
 
-export default function CurrentWeather({ }: Props) {
+export default function CurrentWeather({coords}: Props) {
     const { data } = useSuspenseQuery({
-        queryKey: ["weather"],
-        queryFn: () => getWeather({ lat: 10, lon: 50 }),
+        queryKey: ["weather", coords],
+        queryFn: () => getWeather({ lat: coords.lat, lon: coords.lon }),
     });
     return (
         <Card title='Current Weather' childrenClassname='flex flex-col items-center gap-6'>
