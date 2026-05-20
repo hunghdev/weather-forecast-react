@@ -6,7 +6,7 @@ type Props = {
     setLocation: Dispatch<SetStateAction<string>>
 }
 
-export default function LocationDropdown({location, setLocation}: Props) {
+export default function LocationDropdown({ location, setLocation }: Props) {
     return (
         <Select value={location} onValueChange={(value) => setLocation(value)}>
             <SelectTrigger className="w-45">
@@ -14,6 +14,12 @@ export default function LocationDropdown({location, setLocation}: Props) {
             </SelectTrigger>
             <SelectContent className='z-1001'>
                 <SelectGroup>
+                    {location === 'custom' &&
+                    <SelectItem value='custom'>
+                        Custom
+                    </SelectItem>
+                    }
+
                     {locations.map(city => (
                         <SelectItem key={city} value={city}>
                             {city}
