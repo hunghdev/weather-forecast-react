@@ -16,11 +16,13 @@ import HourlySkeleton from "./components/skeletons/HourlySkeleton";
 import DailySkeleton from "./components/skeletons/DailySkeleton";
 import AdditionalInfoSkeleton from "./components/skeletons/AdditionalInfoSkeleton";
 import SidePanel from "./components/SidePanel";
-
+import Hamburger from '/src/assets/hamburger.svg?react'
+ 
 function App() {
   const [coordinates, setCoords] = useState<Coords>({ lat: 21, lon: 10 })
   const [location, setLocation] = useState('Tokyo')
   const [mapType, setMapType] = useState('clouds_new')
+  const [isSidePanelOpen, setIsSidePanelOpen] = useState(true)
 
   const { data: geocodeData } = useQuery({
     queryKey: ['geocode', location],
@@ -48,25 +50,28 @@ function App() {
             <h1 className="text-2xl font-semibold">Map Type:</h1>
             <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
           </div>
+          <button onClick={() => setIsSidePanelOpen(true)}>
+            <Hamburger className='size-8 invert ml-auto' />
+          </button>
         </div>
         <div className="relative">
           <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
-          <MapLegend mapType={mapType}/>
+          <MapLegend mapType={mapType} />
         </div>
-        <Suspense fallback={<CurrentSkeleton/>}>
+        <Suspense fallback={<CurrentSkeleton />}>
           <CurrentWeather coords={coords} />
         </Suspense>
-        <Suspense fallback={<HourlySkeleton/>}>
+        <Suspense fallback={<HourlySkeleton />}>
           <HourlyForecast coords={coords} />
         </Suspense>
-        <Suspense fallback={<DailySkeleton/>}>
+        <Suspense fallback={<DailySkeleton />}>
           <DailyForecast coords={coords} />
         </Suspense>
-        <Suspense fallback={<AdditionalInfoSkeleton/>}>
+        <Suspense fallback={<AdditionalInfoSkeleton />}>
           <AdditionalInfo coords={coords} />
         </Suspense>
-      </div>
-      <SidePanel coords={coords}/>
+      </div>   
+      <SidePanel coords={coords} isSidePanelOpen={isSidePanelOpen} setIsSidePanelOpen={setIsSidePanelOpen} />
     </>
   );
 }
