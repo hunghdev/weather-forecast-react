@@ -16,20 +16,25 @@ type Props = {
 }
 
 export default function SidePanel(props: Props) {
-    const {isSidePanelOpen, setIsSidePanelOpen} = props
+    const { isSidePanelOpen, setIsSidePanelOpen } = props
     return (
-        <div className={clsx('fixed top-0 right-0 h-screen w-90 shadow-md bg-sidebar z-1001 py-8 px-4 overflow-y-scroll transition-transform duration-300', isSidePanelOpen ? 'translate-x-0': 'translate-x-full')}>
+        <div
+            className={clsx(
+                "fixed top-0 right-0 h-screen w-(--sidebar-width) shadow-md bg-sidebar z-1001 py-8 px-4 overflow-y-scroll transition-transform duration-300 lg:translate-x-0!",
+                isSidePanelOpen ? "translate-x-0" : "translate-x-full"
+            )}
+        >
             <button onClick={() => setIsSidePanelOpen(false)}>
-                <Chevron className='size-6 invert -ml-2'/>
+                <Chevron className="size-8 invert -ml-2 lg:hidden" />
             </button>
-            <Suspense fallback={<SidePanelSkeleton/>}>
-                <AirPolluton {...props} />
+            <Suspense fallback={<SidePanelSkeleton />}>
+                <AirPollution {...props} />
             </Suspense>
         </div>
     )
 }
 
-function AirPolluton({ coords }: Props) {
+function AirPollution({ coords }: Props) {
     const { data } = useSuspenseQuery({
         queryKey: ['pollution', coords],
         queryFn: () => getAirPollution(coords)
@@ -190,12 +195,12 @@ const airQualityRanges: AirQualityRanges = {
 }
 
 const pollutantNameMapping: Record<Pollutant, string> = {
-  SO2: "Sulfur dioxide",
-  NO2: "Nitrogen dioxide",
-  PM10: "Particulate matter 10",
-  PM2_5: "Fine particles matter",
-  O3: "Ozone",
-  CO: "Carbon monoxide",
-  NO: "Nitrogen monoxide",
-  NH3: "Ammonia",
+    SO2: "Sulfur dioxide",
+    NO2: "Nitrogen dioxide",
+    PM10: "Particulate matter 10",
+    PM2_5: "Fine particles matter",
+    O3: "Ozone",
+    CO: "Carbon monoxide",
+    NO: "Nitrogen monoxide",
+    NH3: "Ammonia",
 }

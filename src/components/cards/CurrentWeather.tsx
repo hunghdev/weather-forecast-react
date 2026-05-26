@@ -15,7 +15,7 @@ export default function CurrentWeather({coords}: Props) {
         queryFn: () => getWeather({ lat: coords.lat, lon: coords.lon }),
     });
     return (
-        <Card title='Current Weather' childrenClassname='flex flex-col items-center gap-6'>
+        <Card title='Current Weather' className='md:pb-11' childrenClassname='flex flex-col items-center gap-6 2xl:justify-between'>
             <div className='flex flex-col gap-2 items-center'>
                 <h2 className='text-6xl font-semibold text-center'>{Math.round(data.current.temp)}°C</h2>
                 <WeatherIcon src={data.current.weather[0].icon} className='size-14'/>
