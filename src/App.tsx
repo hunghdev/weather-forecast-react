@@ -18,6 +18,7 @@ import AdditionalInfoSkeleton from "./components/skeletons/AdditionalInfoSkeleto
 import SidePanel from "./components/SidePanel";
 import Hamburger from '/src/assets/hamburger.svg?react'
 import MobileHeader from "./components/MobileHeader";
+import LightDark from "./components/LightDark";
 
 function App() {
   const [coordinates, setCoords] = useState<Coords>({ lat: 21, lon: 10 })
@@ -52,9 +53,14 @@ function App() {
             <h1 className="text-2xl font-semibold whitespace-nowrap">Map Type:</h1>
             <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
           </div>
-          <button onClick={() => setIsSidePanelOpen(true)} className="hidden xs:block">
-            <Hamburger className='size-6 invert lg:hidden ml-auto' />
-          </button>
+          <div className="ml-auto flex gap-4 items-center">
+            <div className="hidden xs:block">
+              <LightDark/>
+              </div>
+            <button onClick={() => setIsSidePanelOpen(true)} className="hidden xs:block">
+              <Hamburger className='size-6 lg:hidden' />
+            </button>
+          </div>
         </div>
         <div className="grid grid-cols-1 2xl:flex-1 2xl:min-h-0 md:grid-cols-2 2xl:grid-cols-4 2xl:grid-rows-4 gap-4 ">
           <div className="relative h-120 2xl:h-auto col-span-1 md:col-span-2 2xl:col-span-4 2xl:row-span-2 order-1">
