@@ -1,7 +1,7 @@
 import { getAirPollution } from '@/api'
 import type { Coords } from '@/types'
 import { useSuspenseQuery } from '@tanstack/react-query'
-import React, { Suspense, type Dispatch, type SetStateAction } from 'react'
+import  { Suspense, type Dispatch, type SetStateAction } from 'react'
 import Card from './cards/Card'
 import { Slider } from './ui/slider'
 import clsx from 'clsx'

@@ -1,4 +1,3 @@
-import React from 'react'
 import Card from './Card'
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { getWeather } from '../../api';

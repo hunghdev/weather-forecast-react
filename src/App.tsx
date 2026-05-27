@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getGeocode, getWeather } from "./api";
-import Card from "./components/cards/Card";
+import { getGeocode } from "./api";
 import DailyForecast from "./components/cards/DailyForecast";
 import HourlyForecast from "./components/cards/HourlyForecast";
 import CurrentWeather from "./components/cards/CurrentWeather";
