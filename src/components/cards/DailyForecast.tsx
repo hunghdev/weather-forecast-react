@@ -1,7 +1,7 @@
-import React from 'react'
+
 import Card from './Card'
 import { getWeather } from '../../api';
-import { useQuery, useSuspenseQuery } from '@tanstack/react-query';
+import { useSuspenseQuery } from '@tanstack/react-query';
 import WeatherIcon from '../WeatherIcon';
 import type { Coords } from '../../types';
 type Props = {
