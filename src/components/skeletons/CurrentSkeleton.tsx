@@ -5,7 +5,9 @@ type Props = {}
 
 export default function CurrentSkeleton({ }: Props) {
     return (
-        <Card title='Current Weather' childrenClassname='flex flex-col items-center gap-6'>
+        <Card title='Current Weather' 
+        className='md:pb-11'
+        childrenClassname='flex flex-col items-center gap-6 2xl:justify-between'>
             <div className='flex flex-col gap-2 items-center'>
                 <Skeleton className='w-30 h-15'/>
                 <Skeleton className='size-14 rounded-full '/>

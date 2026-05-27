@@ -7,7 +7,7 @@ export default function HourlySkeleton({}: Props) {
   return (
     <Card
       title="Hourly Forecast (48 Hours)"
-      childrenClassname="flex gap-6 overflow-x-scroll"
+      childrenClassname='flex gap-6 overflow-x-scroll'
     >
       {Array.from({ length: 48 }).map((_, index) => (
         <div
